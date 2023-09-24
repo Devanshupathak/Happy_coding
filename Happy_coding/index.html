@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayCode - VS Code Style</title>
+    <style>
+        /* Reset some default styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Main container */
+        .code-container {
+            display: flex;
+            height: 100%;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            flex: 0 0 250px;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        /* Code editor area */
+        .editor {
+            flex: 1;
+            background-color: #1e1e1e;
+            color: #fff;
+            padding: 20px;
+        }
+
+        /* Code editor */
+        .code-editor {
+            width: 100%;
+            height: calc(100% - 50px);
+            background-color: #1e1e1e;
+            color: #fff;
+            border: none;
+            font-family: 'Monaco', monospace;
+            font-size: 14px;
+        }
+
+        /* Run Code button */
+        .run-button {
+            display: block;
+            background-color: #007acc;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        /* Language dropdown */
+        .language-dropdown {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="code-container">
+        <!-- Sidebar -->
+        <div class="sidebar" style="height:1000px;">
+            <h2>Explorer</h2>
+            <!-- You can add file/folder navigation here -->
+        </div>
+
+        <!-- Code editor area -->
+        <div class="editor" style="height:1000px;">
+           
+                <h1>Happy Coding </h1><h5 style="margin-left:190px">online code playground</h5>
+                <form id="myform" name="myform" method="post" action="compilecode">
+                    <h3 style="text-align: left;">code</h3>
+                    <textarea rows="20" cols="100" id="code" name="code" style="width:48%;background-color: #333;" placeholder="Input......."class="code-editor"></textarea>
+                    
+                    <textarea rows="20" cols="100" id="input" name="input" style="width:48%;z-index:-1;" placeholder="Output......." class="code-editor"></textarea>
+                    <br>
+                    </br>
+                    <center>  Language:&nbsp;&nbsp;<select name="lang" style="width:120px;height:30px;border-radius:50px;background-color: grey;color: white;">
+                        <option value="c">c</option>
+                        <option value="PHP">PHP</option>
+                        <option value="Java">Java</option>
+                        <option value="Python">Python</option>
+                    </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   
+                    <br>
+                    </br>
+                 <button type="sumbit" value="sumbit" id="sumbit" style="width:120px;height:30px;border-radius:50px;background: color #310;;">RUN</button></center> 
+                </form>
+          
+        </div>
+    </div>
+
+    <script>
+        // Function to run the code
+        function runCode() {
+            const codeEditor = document.querySelector('.code-editor');
+            const selectedLanguage = document.querySelector('.language-dropdown').value;
+
+            // Clear the console
+            console.clear();
+
+            try {
+                // Execute the code based on the selected language
+                const code = codeEditor.value;
+
+                switch (selectedLanguage) {
+                    case 'javascript':
+                        // Use eval() for JavaScript (for demonstration purposes)
+                        eval(code);
+                        break;
+                    case 'python':
+                        // You would need a Python interpreter to execute Python code
+                        console.log('Python code execution not supported in this example.');
+                        break;
+                    default:
+                        console.log('Unsupported language selected.');
+                        break;
+                }
+            } catch (error) {
+                console.error(`Error: ${error.message}`);
+            }
+        }
+    </script>
+</body>
+</html>
